@@ -7,49 +7,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>University Catering Service</h1>
-    <div class="order-form">
-        <h2>Place Your Order</h2>
-        <form id="orderForm">
-            <div class="menu-category">
-                <h3>Main Meals</h3>
-                <label><input type="checkbox" name="mainmeal" class="food-item" value="10"> Burger - £10</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="checkbox" name="mainmeal" class="food-item" value="12"> Pizza - £12</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="checkbox" name="mainmeal" class="food-item" value="8"> Pasta - £8</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-            </div>
-            <div class="menu-category">
-                <h3>Drinks</h3>
-                <label><input type="checkbox" name="drinks" class="food-item" value="2"> Water - £2</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="checkbox" name="drinks" class="food-item" value="3"> Soda - £3</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="checkbox" name="drinks" class="food-item" value="4"> Coffee - £4</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-            </div>
-            <div class="menu-category">
-                <h3>Snacks</h3>
-                <label><input type="checkbox" name="snacks" class="food-item" value="5"> Chips - £5</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="checkbox" name="snacks" class="food-item" value="6"> Sandwich - £6</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="checkbox" name="snacks" class="food-item" value="7"> Salad - £7</label>
-                <input type="number" value="0" min="0" class="quantity" disabled>
-            </div>
-            <div class="total-cost">
-                <strong>Total: £</strong><span id="totalPrice">0</span>
-            </div>
-            <button type="button" id="payWithPayPal">Pay with PayPal</button>
-            <button type="submit">Pay at Counter</button>
-        </form>
+    <div class="container">
+        <h1>University Catering Service</h1>
+        <div class="order-form">
+            <h2>Place Your Order</h2>
+            <form id="orderForm">
+                <div class="menu-category">
+                    <h3>Main Meals</h3>
+                    <div class="item">
+                        <label><input type="checkbox" name="mainmeal" class="food-item" value="10"> Burger - $10</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                    <div class="item">
+                        <label><input type="checkbox" name="mainmeal" class="food-item" value="12"> Pizza - $12</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                    <div class="item">
+                        <label><input type="checkbox" name="mainmeal" class="food-item" value="8"> Pasta - $8</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                </div>
+                <div class="menu-category">
+                    <h3>Drinks</h3>
+                    <div class="item">
+                        <label><input type="checkbox" name="drinks" class="food-item" value="2"> Water - $2</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                    <div class="item">
+                        <label><input type="checkbox" name="drinks" class="food-item" value="3"> Soda - $3</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                    <div class="item">
+                        <label><input type="checkbox" name="drinks" class="food-item" value="4"> Coffee - $4</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                </div>
+                <div class="menu-category">
+                    <h3>Snacks</h3>
+                    <div class="item">
+                        <label><input type="checkbox" name="snacks" class="food-item" value="5"> Chips - $5</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                    <div class="item">
+                        <label><input type="checkbox" name="snacks" class="food-item" value="6"> Sandwich - $6</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                    <div class="item">
+                        <label><input type="checkbox" name="snacks" class="food-item" value="7"> Salad - $7</label>
+                        <input type="number" value="0" min="0" class="quantity" disabled>
+                    </div>
+                </div>
+                <div class="total-cost">
+                    <strong>Total: $</strong><span id="totalPrice">0</span>
+                </div>
+
+                <div id="paypal-button-container"></div>
+                <button type="submit">Pay at Counter</button>
+            </form>
+        </div>
     </div>
-
-    <!-- Load PayPal's SDK script -->
-    <!-- The currency is GBP -->
-
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=GBP"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AXjwJZhvJLUDX1OvJ3BzzIhT6K6kROqMov4V_1VK88GJ9Le-nUUOuBbya9cOlIZCwkcWkTPGEO07-ok5&currency=USD"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@ paypal.Buttons({
         console.error('Payment error:', err);
         alert('There was an issue with your payment. Please try again.');
     }
-}).render('#payWithPayPal');
+}).render('#paypal-button-container');
 
 // Handle form submission for non-PayPal payments
 document.getElementById('orderForm').addEventListener('submit', function(event) {
