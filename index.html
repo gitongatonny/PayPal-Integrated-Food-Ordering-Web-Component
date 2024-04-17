@@ -11,12 +11,39 @@
     <div class="order-form">
         <h2>Place Your Order</h2>
         <form id="orderForm">
-            <label for="item">Select food item:</label>
-            <select id="item" name="item">
-                <option value="sandwich">Sandwich - $5</option>
-                <option value="pizza">Pizza - $10</option>
-                <option value="salad">Salad - $7</option>
-            </select>
+            <div class="menu-item">
+                <label>Main Meals:</label>
+                <select class="food-item">
+                    <option value="0">Select Meal</option>
+                    <option value="10">Burger - $10</option>
+                    <option value="12">Pizza - $12</option>
+                    <option value="8">Pasta - $8</option>
+                </select>
+                <input type="number" value="0" min="0" class="quantity">
+            </div>
+            <div class="menu-item">
+                <label>Drinks:</label>
+                <select class="food-item">
+                    <option value="0">Select Drink</option>
+                    <option value="2">Water - $2</option>
+                    <option value="3">Soda - $3</option>
+                    <option value="4">Coffee - $4</option>
+                </select>
+                <input type="number" value="0" min="0" class="quantity">
+            </div>
+            <div class="menu-item">
+                <label>Snacks:</label>
+                <select class="food-item">
+                    <option value="0">Select Snack</option>
+                    <option value="5">Chips - $5</option>
+                    <option value="6">Sandwich - $6</option>
+                    <option value="7">Salad - $7</option>
+                </select>
+                <input type="number" value="0" min="0" class="quantity">
+            </div>
+            <div class="total-cost">
+                <strong>Total: $</strong><span id="totalPrice">0</span>
+            </div>
             <button type="button" id="payWithPayPal">Pay with PayPal</button>
             <button type="submit">Pay at Counter</button>
         </form>

@@ -1,42 +1,61 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    margin: 40px;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
 h1, h2 {
-    color: #333;
+    text-align: center;
 }
 
 .order-form {
     background: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    width: 50%;
+    margin: auto;
 }
 
-form {
-    margin-top: 20px;
+.menu-item {
+    margin-bottom: 20px;
 }
 
 label {
-    margin-right: 10px;
+    display: block;
+    margin-bottom: 5px;
 }
 
-select {
-    margin-right: 20px;
+select, input {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.total-cost {
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: right;
 }
 
 button {
-    cursor: pointer;
-    padding: 10px 20px;
+    width: 49%;
+    padding: 10px;
     border: none;
-    background-color: #0070ba;
-    color: white;
     border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    background-color: #007bff;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: #005ea6;
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004085;
 }
