@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Catering Service - Order Food</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>University Catering Service</h1>
+    <div class="order-form">
+        <h2>Place Your Order</h2>
+        <form id="orderForm">
+            <label for="item">Select food item:</label>
+            <select id="item" name="item">
+                <option value="sandwich">Sandwich - $5</option>
+                <option value="pizza">Pizza - $10</option>
+                <option value="salad">Salad - $7</option>
+            </select>
+            <button type="button" id="payWithPayPal">Pay with PayPal</button>
+            <button type="submit">Pay at Counter</button>
+        </form>
+    </div>
+
+    <!-- Load PayPal's SDK script -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+    <script src="script.js"></script>
+</body>
+</html>
