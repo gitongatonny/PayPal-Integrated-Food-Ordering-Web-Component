@@ -27,12 +27,12 @@ h1, h2 {
 }
 
 label {
-    display: block;
+    display: flex;
+    align-items: center;
     margin-bottom: 5px;
-    font-size: 16px;
 }
 
-input[type="radio"] {
+input[type="checkbox"] {
     margin-right: 10px;
 }
 
@@ -40,8 +40,9 @@ input[type="radio"] {
     width: 50px;
     padding: 5px;
     margin-left: 10px;
-    margin-bottom: 10px;  /* Separates quantities visually */
-    vertical-align: middle;  /* Aligns input vertically with the radio button */
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .total-cost {
@@ -59,7 +60,7 @@ button {
     font-size: 16px;
     background-color: #007bff;
     cursor: pointer;
-    margin-top: 10px;  /* Ensures some space between the last inputs and the buttons */
+    margin-top: 10px;
 }
 
 button:hover {

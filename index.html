@@ -13,29 +13,29 @@
         <form id="orderForm">
             <div class="menu-category">
                 <h3>Main Meals</h3>
-                <label><input type="radio" name="mainmeal" value="10" class="food-item"> Burger - £10</label>
+                <label><input type="checkbox" name="mainmeal" class="food-item" value="10"> Burger - £10</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="radio" name="mainmeal" value="12" class="food-item"> Pizza - £12</label>
+                <label><input type="checkbox" name="mainmeal" class="food-item" value="12"> Pizza - £12</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="radio" name="mainmeal" value="8" class="food-item"> Pasta - £8</label>
+                <label><input type="checkbox" name="mainmeal" class="food-item" value="8"> Pasta - £8</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
             </div>
             <div class="menu-category">
                 <h3>Drinks</h3>
-                <label><input type="radio" name="drinks" value="2" class="food-item"> Water - £2</label>
+                <label><input type="checkbox" name="drinks" class="food-item" value="2"> Water - £2</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="radio" name="drinks" value="3" class="food-item"> Soda - £3</label>
+                <label><input type="checkbox" name="drinks" class="food-item" value="3"> Soda - £3</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="radio" name="drinks" value="4" class="food-item"> Coffee - £4</label>
+                <label><input type="checkbox" name="drinks" class="food-item" value="4"> Coffee - £4</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
             </div>
             <div class="menu-category">
                 <h3>Snacks</h3>
-                <label><input type="radio" name="snacks" value="5" class="food-item"> Chips - £5</label>
+                <label><input type="checkbox" name="snacks" class="food-item" value="5"> Chips - £5</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="radio" name="snacks" value="6" class="food-item"> Sandwich - £6</label>
+                <label><input type="checkbox" name="snacks" class="food-item" value="6"> Sandwich - £6</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
-                <label><input type="radio" name="snacks" value="7" class="food-item"> Salad - £7</label>
+                <label><input type="checkbox" name="snacks" class="food-item" value="7"> Salad - £7</label>
                 <input type="number" value="0" min="0" class="quantity" disabled>
             </div>
             <div class="total-cost">
@@ -46,7 +46,9 @@
         </form>
     </div>
 
-    <!-- Load PayPal's SDK script with the currency set to GBP -->
+    <!-- Load PayPal's SDK script -->
+    <!-- The currency is GBP -->
+
     <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=GBP"></script>
     <script src="script.js"></script>
 </body>
