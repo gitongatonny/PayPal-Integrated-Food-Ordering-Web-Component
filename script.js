@@ -91,6 +91,9 @@ paypal.Buttons({
   onError: function(err) {
     console.error('Payment error:', err);
     alert('There was an issue with your payment. Please try again.');
+  },
+  onCancel: function(data) {
+    console.log('Payment cancelled by the user.');
   }
 }).render('#paypal-button-container');
 
