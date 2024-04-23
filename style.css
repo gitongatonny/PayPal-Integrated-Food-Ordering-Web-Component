@@ -37,8 +37,7 @@ body {
   
   .quantity {
     width: 60px;
-    margin-left: 10px;
-    /* Allows spacing between checkbox and input */
+    margin-left: 10px; /* Allows spacing between checkbox and input */
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -52,8 +51,7 @@ body {
   }
   
   button {
-    width: auto;
-    /* Makes the button size to fit its text content */
+    width: auto; /* Makes the button size to fit its text content */
     padding: 10px 15px;
     background-color: #007bff;
     color: white;
@@ -61,8 +59,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     display: block;
-    margin: 20px auto;
-    /* Centers button in the form */
+    margin: 20px auto; /* Centers button in the form */
   }
   
   button:hover {
@@ -70,11 +67,9 @@ body {
   }
   
   #paypal-button-container {
-    margin-top: 20px;
-    /* Space above the PayPal button container */
+    margin-top: 20px; /* Space above the PayPal button container */
   }
-
-
+  
   .order-another {
     text-align: center;
     margin-top: 20px;
