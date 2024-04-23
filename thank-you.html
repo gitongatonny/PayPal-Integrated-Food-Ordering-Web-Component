@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - University Catering Service</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Thank You for Your Order!</h1>
+    <div class="order-summary">
+      <h2>Order Summary:</h2>
+      <p>Invoice ID: <span id="invoiceID"></span></p>
+      <ul id="itemList"></ul>
+      <p>Total: $<span id="totalAmount"></span></p>
+    </div>
+  </div>
+  <script>
+    // Parse the URL parameters to display the order summary
+    const urlParams = new URLSearchParams(window.location.search);
+    const itemList = document.getElementById('itemList');
+    urlParams.getAll('item[]').forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      itemList.appendChild(li);
+    });
+    document.getElementById('totalAmount').textContent = urlParams.get('total');
+    document.getElementById('invoiceID').textContent = urlParams.get('invoiceID');
+  </script>
+</body>
+</html>
