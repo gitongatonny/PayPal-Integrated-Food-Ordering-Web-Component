@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Order - University Catering Service</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Confirm Your Order</h1>
+    <div class="order-summary">
+      <h2>Order Summary:</h2>
+      <p>Invoice ID: <span id="invoiceID"></span></p>
+      <ul id="itemList"></ul>
+      <p>Total: $<span id="totalAmount"></span></p>
+    </div>
+    <div class="disclaimer">
+      <p>Please confirm your order details. When you click "Confirm and Place Order", a PayPal pop-up will open to confirm the total price and finalize the payment.</p>
+    </div>
+    <button id="confirmButton">Confirm and Place Order</button>
+  </div>
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+  <script src="confirm-order.js"></script>
+</body>
+</html>
