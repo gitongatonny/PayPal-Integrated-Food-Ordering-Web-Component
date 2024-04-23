@@ -84,6 +84,7 @@ paypal.Buttons({
         searchParams.append('item[]', `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`);
       });
       searchParams.append('total', document.getElementById('totalPrice').textContent);
+      searchParams.append('invoiceID', data.orderID);
       window.location.href = `thank-you.html?${searchParams.toString()}`;
     });
   },
