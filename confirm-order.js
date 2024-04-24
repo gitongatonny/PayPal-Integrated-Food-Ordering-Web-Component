@@ -71,5 +71,5 @@ document.getElementById('payAtCounterBtn').addEventListener('click', function() 
   alert('Payment at the counter successful!');
   
   // Redirect to the thank you page with the order details
-  window.location.href = `thank-you.html?${urlParams.toString()}`;
+  window.location.href = `thank-you.html?${urlParams.toString()}&customerName=${details.payer.name.given_name}`;
 });

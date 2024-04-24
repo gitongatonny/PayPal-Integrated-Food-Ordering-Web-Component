@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You - University Catering Service</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -33,7 +35,10 @@
     <div class="order-another">
       <a href="index.html">Order Another Meal</a>
     </div>
+    <button id="downloadReceiptBtn">Download Receipt</button>
   </div>
+
+
   <script>
     // Parse the URL parameters to display the order summary
     const urlParams = new URLSearchParams(window.location.search);
@@ -58,6 +63,37 @@
 
     document.getElementById('overallTotal').textContent = `$${overallTotal.toFixed(2)}`;
     document.getElementById('invoiceID').textContent = urlParams.get('invoiceID');
+
+    // PDF generation logic
+    document.getElementById('downloadReceiptBtn').addEventListener('click', function() {
+      const doc = new jspdf.jsPDF();
+
+      doc.setFont('helvetica');
+      doc.setFontSize(16);
+      doc.text('University Catering Service', 20, 20);
+      doc.setFontSize(12);
+      doc.text(`Invoice ID: ${urlParams.get('invoiceID')}`, 20, 30);
+
+      doc.autoTable({
+        startY: 40,
+        head: [['Item', 'Price', 'Quantity', 'Total']],
+        body: Array.from(document.querySelectorAll('#itemTable tbody tr')).map(row => [
+          row.cells[0].textContent,
+          row.cells[1].textContent,
+          row.cells[2].textContent,
+          row.cells[3].textContent
+        ]),
+        foot: [['', '', 'Overall Total:', document.getElementById('overallTotal').textContent]]
+      });
+
+      doc.text('Payment Details:', 20, doc.lastAutoTable.finalY + 20);
+      doc.text(`Paid to: Hull University Catering Service`, 20, doc.lastAutoTable.finalY + 30);
+      doc.text(`Paid by: ${urlParams.get('customerName')}`, 20, doc.lastAutoTable.finalY + 40);
+
+      const invoiceNumber = urlParams.get('invoiceID');
+      const filename = `${invoiceNumber}-food-order.pdf`;
+      doc.save(filename);
+    });
   </script>
 </body>
 </html>
