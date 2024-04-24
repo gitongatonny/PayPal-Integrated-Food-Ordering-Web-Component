@@ -53,7 +53,20 @@ paypal.Buttons({
   },
   onApprove: function(data, actions) {
     return actions.order.capture().then(function(details) {
-      window.location.href = `thank-you.html?${urlParams.toString()}`;
+      // Retrieve customer and business details from PayPal
+      const customerName = details.payer.name.given_name + ' ' + details.payer.name.surname;
+      const customerEmail = details.payer.email_address;
+      const businessName = details.purchase_units[0].payee.email_address;
+      const businessEmail = details.purchase_units[0].payee.merchant_id;
+
+      // Pass the details to the thank you page
+      const params = new URLSearchParams(urlParams);
+      params.append('customerName', customerName);
+      params.append('customerEmail', customerEmail);
+      params.append('businessName', businessName);
+      params.append('businessEmail', businessEmail);
+
+      window.location.href = `thank-you.html?${params.toString()}`;
     });
   },
   onError: function(err) {
@@ -71,5 +84,5 @@ document.getElementById('payAtCounterBtn').addEventListener('click', function() 
   alert('Payment at the counter successful!');
   
   // Redirect to the thank you page with the order details
-  window.location.href = `thank-you.html?${urlParams.toString()}&customerName=${details.payer.name.given_name}`;
+  window.location.href = `thank-you.html?${urlParams.toString()}`;
 });

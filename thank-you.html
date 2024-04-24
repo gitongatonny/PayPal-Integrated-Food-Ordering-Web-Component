@@ -37,8 +37,6 @@
     </div>
     <button id="downloadReceiptBtn">Download Receipt</button>
   </div>
-
-
   <script>
     // Parse the URL parameters to display the order summary
     const urlParams = new URLSearchParams(window.location.search);
@@ -70,7 +68,7 @@
 
       doc.setFont('helvetica');
       doc.setFontSize(16);
-      doc.text('University Catering Service', 20, 20);
+      doc.text('Hull University Catering Service', 20, 20);
       doc.setFontSize(12);
       doc.text(`Invoice ID: ${urlParams.get('invoiceID')}`, 20, 30);
 
@@ -87,8 +85,10 @@
       });
 
       doc.text('Payment Details:', 20, doc.lastAutoTable.finalY + 20);
-      doc.text(`Paid to: Hull University Catering Service`, 20, doc.lastAutoTable.finalY + 30);
-      doc.text(`Paid by: ${urlParams.get('customerName')}`, 20, doc.lastAutoTable.finalY + 40);
+      doc.text(`Paid to: ${urlParams.get('businessName')}`, 20, doc.lastAutoTable.finalY + 30);
+      doc.text(`Business Email: ${urlParams.get('businessEmail')}`, 20, doc.lastAutoTable.finalY + 40);
+      doc.text(`Paid by: ${urlParams.get('customerName')}`, 20, doc.lastAutoTable.finalY + 50);
+      doc.text(`Customer Email: ${urlParams.get('customerEmail')}`, 20, doc.lastAutoTable.finalY + 60);
 
       const invoiceNumber = urlParams.get('invoiceID');
       const filename = `${invoiceNumber}-food-order.pdf`;
