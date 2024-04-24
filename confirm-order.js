@@ -1,5 +1,3 @@
-// confirm-order.js
-
 // Parse the URL parameters to display the order summary
 const urlParams = new URLSearchParams(window.location.search);
 const itemTable = document.querySelector('#itemTable tbody');
@@ -66,3 +64,12 @@ paypal.Buttons({
     console.log('Payment cancelled by the user.');
   }
 }).render('#paypal-button-container');
+
+// Pay at the Counter button click event handler
+document.getElementById('payAtCounterBtn').addEventListener('click', function() {
+  // Show a success pop-up
+  alert('Payment at the counter successful!');
+  
+  // Redirect to the thank you page with the order details
+  window.location.href = `thank-you.html?${urlParams.toString()}`;
+});
