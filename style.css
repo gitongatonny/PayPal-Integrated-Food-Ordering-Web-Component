@@ -87,3 +87,41 @@ body {
   .order-another a:hover {
     background-color: #0056b3;
   }
+
+
+  /* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  tfoot td {
+    font-weight: bold;
+  }
+  
+  tfoot td:first-child {
+    text-align: right;
+  }
+  
+  /* Responsive table styles */
+  @media screen and (max-width: 600px) {
+    table {
+      font-size: 14px;
+    }
+    
+    th, td {
+      padding: 8px;
+    }
+  }

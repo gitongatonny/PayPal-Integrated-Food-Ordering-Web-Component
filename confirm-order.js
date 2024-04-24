@@ -1,14 +1,27 @@
+// confirm-order.js
+
 // Parse the URL parameters to display the order summary
 const urlParams = new URLSearchParams(window.location.search);
-const itemList = document.getElementById('itemList');
+const itemTable = document.querySelector('#itemTable tbody');
 const selectedItems = [];
+
+let overallTotal = 0;
 
 urlParams.getAll('item[]').forEach(item => {
   const [name, priceQuantity] = item.split(' - ');
   const [price, quantity] = priceQuantity.split(' x ');
-  const li = document.createElement('li');
-  li.textContent = `${name} - ${price} x ${quantity}`;
-  itemList.appendChild(li);
+  const itemTotal = parseFloat(price.replace('$', '')) * parseInt(quantity);
+  overallTotal += itemTotal;
+
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${name}</td>
+    <td>${price}</td>
+    <td>${quantity}</td>
+    <td>$${itemTotal.toFixed(2)}</td>
+  `;
+  itemTable.appendChild(row);
+  
   selectedItems.push({
     name: name.trim(),
     unit_amount: { currency_code: 'USD', value: price.replace('$', '') },
@@ -16,23 +29,22 @@ urlParams.getAll('item[]').forEach(item => {
   });
 });
 
-document.getElementById('totalAmount').textContent = urlParams.get('total');
+document.getElementById('overallTotal').textContent = `$${overallTotal.toFixed(2)}`;
 document.getElementById('invoiceID').textContent = urlParams.get('invoiceID');
 
 // PayPal button configuration and handling
 paypal.Buttons({
   createOrder: function(data, actions) {
-    const total = parseFloat(urlParams.get('total'));
     const invoiceID = urlParams.get('invoiceID');
 
     return actions.order.create({
       purchase_units: [{
         amount: {
-          value: total.toFixed(2),
+          value: overallTotal.toFixed(2),
           breakdown: {
             item_total: {
               currency_code: 'USD',
-              value: total.toFixed(2)
+              value: overallTotal.toFixed(2)
             }
           }
         },
@@ -53,4 +65,4 @@ paypal.Buttons({
   onCancel: function(data) {
     console.log('Payment cancelled by the user.');
   }
-}).render('#confirmButton');
+}).render('#paypal-button-container');

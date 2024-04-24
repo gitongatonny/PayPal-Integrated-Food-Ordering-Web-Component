@@ -12,8 +12,23 @@
     <div class="order-summary">
       <h2>Order Summary:</h2>
       <p>Invoice ID: <span id="invoiceID"></span></p>
-      <ul id="itemList"></ul>
-      <p>Total: $<span id="totalAmount"></span></p>
+      <table id="itemTable">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Overall Total:</td>
+            <td id="overallTotal"></td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
     <div class="order-another">
       <a href="index.html">Order Another Meal</a>
@@ -22,13 +37,26 @@
   <script>
     // Parse the URL parameters to display the order summary
     const urlParams = new URLSearchParams(window.location.search);
-    const itemList = document.getElementById('itemList');
+    const itemTable = document.querySelector('#itemTable tbody');
+    let overallTotal = 0;
+
     urlParams.getAll('item[]').forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      itemList.appendChild(li);
+      const [name, priceQuantity] = item.split(' - ');
+      const [price, quantity] = priceQuantity.split(' x ');
+      const itemTotal = parseFloat(price.replace('$', '')) * parseInt(quantity);
+      overallTotal += itemTotal;
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${name}</td>
+        <td>${price}</td>
+        <td>${quantity}</td>
+        <td>$${itemTotal.toFixed(2)}</td>
+      `;
+      itemTable.appendChild(row);
     });
-    document.getElementById('totalAmount').textContent = urlParams.get('total');
+
+    document.getElementById('overallTotal').textContent = `$${overallTotal.toFixed(2)}`;
     document.getElementById('invoiceID').textContent = urlParams.get('invoiceID');
   </script>
 </body>

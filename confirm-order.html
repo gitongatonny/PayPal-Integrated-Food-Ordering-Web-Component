@@ -11,14 +11,31 @@
     <h1>Confirm Your Order</h1>
     <div class="order-summary">
       <h2>Order Summary:</h2>
-      <p>Invoice ID: <span id="invoiceID"></span></p>
-      <ul id="itemList"></ul>
-      <p>Total: $<span id="totalAmount"></span></p>
+      <p><strong> Invoice ID:</strong><span id="invoiceID"></span></p>
+      <table id="itemTable">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Table rows will be dynamically populated here -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Overall Total:</td>
+            <td id="overallTotal"></td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
     <div class="disclaimer">
       <p>Please confirm your order details. When you click "Confirm and Place Order", a PayPal pop-up will open to confirm the total price and finalize the payment.</p>
     </div>
-    <button id="confirmButton">Confirm and Place Order</button>
+    <div id="paypal-button-container"></div>
   </div>
   <script src="https://www.paypal.com/sdk/js?client-id=AXjwJZhvJLUDX1OvJ3BzzIhT6K6kROqMov4V_1VK88GJ9Le-nUUOuBbya9cOlIZCwkcWkTPGEO07-ok5&currency=USD"></script>
   <script src="confirm-order.js"></script>

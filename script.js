@@ -45,70 +45,19 @@ function getSelectedItems() {
   return selectedItems;
 }
 
-// PayPal button configuration and handling
-paypal.Buttons({
-  createOrder: function(data, actions) {
-    const selectedItems = getSelectedItems();
-    const invoiceID = generateInvoiceID();
-    const total = parseFloat(document.getElementById('totalPrice').textContent);
-
-    return actions.order.create({
-      purchase_units: [{
-        amount: {
-          value: total.toFixed(2),
-          breakdown: {
-            item_total: {
-              currency_code: 'USD',
-              value: total.toFixed(2)
-            }
-          }
-        },
-        items: selectedItems.map(item => ({
-          name: item.name,
-          unit_amount: {
-            currency_code: 'USD',
-            value: item.price.toFixed(2)
-          },
-          quantity: item.quantity
-        })),
-        invoice_id: invoiceID
-      }]
-    });
-  },
-  onApprove: function(data, actions) {
-    return actions.order.capture().then(function(details) {
-      // Redirect to the thank you page with order details
-      const selectedItems = getSelectedItems();
-      const searchParams = new URLSearchParams();
-      selectedItems.forEach(item => {
-        searchParams.append('item[]', `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`);
-      });
-      searchParams.append('total', document.getElementById('totalPrice').textContent);
-      searchParams.append('invoiceID', data.orderID);
-      window.location.href = `thank-you.html?${searchParams.toString()}`;
-    });
-  },
-  onError: function(err) {
-    console.error('Payment error:', err);
-    alert('There was an issue with your payment. Please try again.');
-  },
-  onCancel: function(data) {
-    console.log('Payment cancelled by the user.');
-  }
-}).render('#paypal-button-container');
-
-// Handle form submission for counter payments
+// Handle form submission for PayPal payment
 document.getElementById('orderForm').addEventListener('submit', function(event) {
   event.preventDefault();
   const selectedItems = getSelectedItems();
   const invoiceID = generateInvoiceID();
+  const total = parseFloat(document.getElementById('totalPrice').textContent);
   const searchParams = new URLSearchParams();
   selectedItems.forEach(item => {
     searchParams.append('item[]', `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`);
   });
-  searchParams.append('total', document.getElementById('totalPrice').textContent);
+  searchParams.append('total', total.toFixed(2));
   searchParams.append('invoiceID', invoiceID);
-  window.location.href = `thank-you.html?${searchParams.toString()}`;
+  window.location.href = `confirm-order.html?${searchParams.toString()}`;
 });
 
 // Function to clear all selections
