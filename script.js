@@ -25,7 +25,7 @@ function updateTotal() {
       total += price * quantity;
     }
   });
-  document.getElementById('totalPrice').textContent = total.toFixed(2);
+  document.getElementById('totalPrice').textContent = '£' + total.toFixed(2);
 }
 
 // Function to generate a unique invoice ID
@@ -50,10 +50,10 @@ document.getElementById('orderForm').addEventListener('submit', function(event) 
   event.preventDefault();
   const selectedItems = getSelectedItems();
   const invoiceID = generateInvoiceID();
-  const total = parseFloat(document.getElementById('totalPrice').textContent);
+  const total = parseFloat(document.getElementById('totalPrice').textContent.replace('£', ''));
   const searchParams = new URLSearchParams();
   selectedItems.forEach(item => {
-    searchParams.append('item[]', `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`);
+    searchParams.append('item[]', `${item.name} - £${item.price.toFixed(2)} x ${item.quantity}`);
   });
   searchParams.append('total', total.toFixed(2));
   searchParams.append('invoiceID', invoiceID);
