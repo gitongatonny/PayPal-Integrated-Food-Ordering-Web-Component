@@ -88,10 +88,10 @@
       });
 
       doc.text('Payment Details:', 20, doc.lastAutoTable.finalY + 20);
-      doc.text(`Paid to: ${urlParams.get('businessName')}`, 20, doc.lastAutoTable.finalY + 30);
-      doc.text(`Business Email: ${urlParams.get('businessEmail')}`, 20, doc.lastAutoTable.finalY + 40);
-      doc.text(`Paid by: ${urlParams.get('customerName')}`, 20, doc.lastAutoTable.finalY + 50);
-      doc.text(`Customer Email: ${urlParams.get('customerEmail')}`, 20, doc.lastAutoTable.finalY + 60);
+      doc.text(`Seller's PayPal ID: ${urlParams.get('businessName')}`, 20, doc.lastAutoTable.finalY + 30);
+      doc.text(`Seller's Email: ${urlParams.get('businessEmail')}`, 20, doc.lastAutoTable.finalY + 40);
+      doc.text(`Customer's Name: ${urlParams.get('customerName')}`, 20, doc.lastAutoTable.finalY + 50);
+      doc.text(`Customer's Email: ${urlParams.get('customerEmail')}`, 20, doc.lastAutoTable.finalY + 60);
 
       const invoiceNumber = urlParams.get('invoiceID');
       const filename = `${invoiceNumber}-food-order.pdf`;
