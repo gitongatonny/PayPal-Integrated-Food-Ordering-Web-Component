@@ -8,7 +8,7 @@ let overallTotal = 0;
 urlParams.getAll('item[]').forEach(item => {
   const [name, priceQuantity] = item.split(' - ');
   const [price, quantity] = priceQuantity.split(' x ');
-  const itemTotal = parseFloat(price.replace('$', '')) * parseInt(quantity);
+  const itemTotal = parseFloat(price.replace('£', '')) * parseInt(quantity);
   overallTotal += itemTotal;
 
   const row = document.createElement('tr');
@@ -16,18 +16,18 @@ urlParams.getAll('item[]').forEach(item => {
     <td>${name}</td>
     <td>${price}</td>
     <td>${quantity}</td>
-    <td>$${itemTotal.toFixed(2)}</td>
+    <td>£${itemTotal.toFixed(2)}</td>
   `;
   itemTable.appendChild(row);
   
   selectedItems.push({
     name: name.trim(),
-    unit_amount: { currency_code: 'USD', value: price.replace('$', '') },
+    unit_amount: { currency_code: 'GBP', value: price.replace('£', '') },
     quantity: parseInt(quantity)
   });
 });
 
-document.getElementById('overallTotal').textContent = `$${overallTotal.toFixed(2)}`;
+document.getElementById('overallTotal').textContent = `£${overallTotal.toFixed(2)}`;
 document.getElementById('invoiceID').textContent = urlParams.get('invoiceID');
 
 // PayPal button configuration and handling
@@ -41,12 +41,15 @@ paypal.Buttons({
           value: overallTotal.toFixed(2),
           breakdown: {
             item_total: {
-              currency_code: 'USD',
+              currency_code: 'GBP',
               value: overallTotal.toFixed(2)
             }
           }
         },
-        items: selectedItems,
+        items: selectedItems.map(item => ({
+          ...item,
+          unit_amount: { currency_code: 'GBP', value: item.unit_amount.value }
+        })),
         invoice_id: invoiceID
       }]
     });
