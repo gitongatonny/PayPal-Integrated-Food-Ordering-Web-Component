@@ -1,62 +1,59 @@
-## Index Page
-```
-Display menu categories and food items
-For each item:
-    Add event listener to checkbox
-    Add event listener to quantity input
-    On checkbox change:
-        Enable/disable quantity input
-        Update total cost
-    On quantity change:
-        Update total cost
+# University Catering Service - Food Ordering System
 
-On form submit:
-    Redirect to Confirm Order page with selected items and total cost
-```
+## Index Page (index.html)
 
+- Display menu categories: **Main Meals**, **Drinks**, and **Snacks**
+- For each food item:
+  - Checkbox for selection
+  - Quantity input (disabled by default)
+- Event listeners:
+  - On checkbox change: Enable/disable quantity input and update total
+  - On quantity change: Update total cost
+- Form submission:
+  - Generate unique invoice ID
+  - Redirect to **Confirm Order** page with selected items and total
 
-## Confirm Order Page
-```
-Parse URL parameters to retrieve selected items and total cost
+## Confirm Order Page (confirm-order.html)
 
-Display order summary with selected items, prices, quantities, and total cost
+1. Parse URL parameters for order details
+2. Display order summary table:
+   - Item name, price, quantity, and total
+   - Overall total
+3. Show invoice ID
+4. Initialize PayPal button:
+   - Create order with selected items
+   - On approval: Capture payment and redirect to *Thank You* page
+5. "Pay at Counter" option available
 
-Initialize PayPal button:
-    On payment approval:
-        Retrieve transaction details
-        Redirect to Thank You page with transaction details
-    On payment error:
-        Display error message
-    On payment cancel:
-        Log cancellation
+## Thank You Page (thank-you.html)
 
-On "Pay at Counter" button click:
-    Display success message
-    Redirect to Thank You page with order details
-```
+- Parse URL parameters for transaction details
+- Display:
+  - Thank you message
+  - Order summary table
+  - Invoice ID
+  - Transaction time
+- "Download Receipt" button:
+  - Generate PDF with order details
+  - Save with unique filename: `{invoiceID}-food-order.pdf`
+- Option to place another order
 
+## PDF Receipt Generation (generate-pdf.js)
 
-## Thank You Page
-```
-Parse URL parameters to retrieve order details
+1. Create new jsPDF instance
+2. Add:
+   - University Catering Service header
+   - Invoice ID
+   - Transaction time
+   - Order details table
+   - Payment information
+3. Save PDF with unique invoice ID-based filename
 
-Display thank you message with order summary
-On "Download Receipt" button click:
-    Generate PDF receipt with order details
-    Save PDF receipt with unique filename
-Provide option to place another order
-```
+## Styling (style.css)
 
-
-## Generate PDF Receipt
-```
-Create new PDF document
-
-Add store name, invoice ID, and transaction time
-
-Add order details table with selected items, prices, quantities, and total cost
-
-Add payment details (paid to, paid by)
-
-Save PDF with unique filename based on invoice ID"""
-```
+- Responsive design with media queries
+- Consistent styling for forms, tables, and buttons
+- Color scheme: 
+  - Primary: #007bff
+  - Hover: #0056b3
+  - Background: #f9f9f9
