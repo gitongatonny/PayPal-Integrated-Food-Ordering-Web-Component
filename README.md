@@ -1,4 +1,4 @@
-# University Catering Food Ordering System
+# University Catering Food Ordering Web Component.
 
 ## Overview
 
@@ -6,7 +6,9 @@ This University Catering Food Ordering Web Component is a comprehensive system d
 - PayPal
 - Pay at the Counter
 
-![Overview Screenshot](path/to/overview_screenshot.png)
+![Homepage](screenshots/home.png)
+
+<br>
 
 ## How the App Works
 
@@ -19,7 +21,7 @@ This University Catering Food Ordering Web Component is a comprehensive system d
 5. **Transaction Processing**: The app generates a unique invoice and processes the payment.
 6. **Receipt Generation**: A downloadable PDF receipt is created post-transaction.
 
-![App Flow Screenshot](path/to/app_flow_screenshot.png)
+<br>
 
 ## PayPal Integration
 
@@ -30,6 +32,30 @@ The app uses the PayPal JavaScript SDK for secure payment processing:
 - Generates unique invoices for each order.
 - Records detailed transaction information including itemized list and pricing.
 - Reflects transactions in both customer and business accounts.
+
+<br>
+
+## Screenshots
+
+### 1. Confirm Order Page.
+![Confirm Order Page](screenshots/confirm-order.png)
+
+<br>
+
+### 2. Payment Page.
+![Payment Page](screenshots/payment.png)
+
+<br>
+
+### 3. Thank You Page.
+![Thank You Page](screenshots/thank-you.png)
+
+<br>
+
+### 4. Generated PDF Receipt.
+![Generated PDF Receipt](screenshots/pdf.png)
+
+
 
 ## Technology Stack
 
