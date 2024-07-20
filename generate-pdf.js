@@ -2,7 +2,7 @@ document.getElementById('downloadReceiptBtn').addEventListener('click', function
     // Create a new jsPDF instance
     const doc = new jsPDF();
   
-    // Set the font and size for the PDF
+    // PDF font type & size
     doc.setFont('helvetica');
     doc.setFontSize(16);
   
