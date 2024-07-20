@@ -67,13 +67,12 @@ The app uses the PayPal JavaScript SDK for secure payment processing:
 
 ## Installation and Setup
 
-1. Clone the repository: git clone https://github.com/your-repo/university-catering-system.git
+1. Clone the repository: git clone https://github.com/gitongatonny/PayPal-Integrated-Food-Ordering-Web-Component.git
 2. Navigate to the project directory:
 3. Open `index.html` in a web browser to start using the application.
 
 ## Testing
 For testing purposes:
 
-- Use the provided sandbox PayPal business account.
-- Utilize dummy customer accounts to simulate transactions.
-- Verify transaction records in both customer and business accounts post-payment.
+- Use sandbox (dummy) customer accounts to simulate transactions.
+- Verify transaction records in the accounts post-payment.
